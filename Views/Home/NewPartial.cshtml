@@ -1,0 +1,26 @@
+@model Chef
+
+<div class="d-flex justify-content-between mb-3">
+  <h3 class="my-0 ml-2">ADD A CHEF</h3>
+  <a href="/" class="btn btn-primary" class="float-right" role="button">BACK TO HOME</a>
+</div>
+<form asp-action="ProcessChef" asp-controller="Home" method="POST" class="p-3 border border-primary rounded">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label asp-for="FirstName"></label>
+      <input asp-for="FirstName" class="form-control" placeholder="First Name">
+      <span asp-validation-for="FirstName" style="color:red;"></span>
+    </div>
+    <div class="form-group col-md-4">
+      <label asp-for="LastName"></label>
+      <input asp-for="LastName" class="form-control" placeholder="Last Name">
+      <span asp-validation-for="LastName" style="color:red;"></span>
+    </div>
+    <div class="form-group col-md-4">
+      <label asp-for="DateOfBirth"></label>
+      <input asp-for="DateOfBirth" class="form-control">
+      <span asp-validation-for="DateOfBirth" style="color:red;"></span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">SUBMIT CHEF</button>
+</form>

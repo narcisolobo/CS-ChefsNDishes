@@ -1,0 +1,40 @@
+@using ChefsNDishes.Models
+@model List<Dish>
+
+@{
+  ViewData["Title"] = "Chefs 'N Dishes";
+}
+<div class="row text-center bg-primary p-3 large-white">
+  <div class="col-sm-5 text-right"><a href="/" class="text-white">CHEFS</a></div>
+  <div class="col-sm-2 text-center">|</div>
+  <div class="col-sm-5 text-left active-page"><a href="/dishes" class="text-white">DISHES</a></div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="d-flex justify-content-between mb-3">
+      <h3 class="my-0 ml-2">TASTY DISHES</h3>
+      <a href="/dishes/new" class="btn btn-primary" class="float-right" role="button">ADD A DISH</a>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name of Dish</th>
+          <th scope="col">Chef</th>
+          <th scope="col">Tastiness</th>
+          <th scope="col">Calories</th>
+        </tr>
+      </thead>
+        @foreach (var dish in Model) {
+          <tr>
+            <td><a href="/viewdish/@dish.Id">@dish.Name</a></td>
+            <td>@dish.SubmittedBy.FirstName @dish.SubmittedBy.LastName</td>
+            <td>@dish.Tastiness</td>
+            <td>@dish.Calories</td>
+          </tr>
+        }
+    </table>
+  </div>
+  <div class="col-sm-3"></div>
+</div>

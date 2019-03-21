@@ -1,0 +1,62 @@
+@using ChefsNDishes.Models
+@model Dish
+
+@{
+  ViewData["Title"] = "Chefs 'N Dishes";
+  int[] ratings = {1,2,3,4,5};
+}
+<div class="row text-center bg-primary p-3 large-white">
+  <div class="col-sm-5 text-right active-page"><a href="/" class="text-white">CHEFS</a></div>
+  <div class="col-sm-2 text-center">|</div>
+  <div class="col-sm-5 text-left"><a href="/dishes" class="text-white">DISHES</a></div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <form asp-action="ProcessDish" asp-controller="Home" method="POST" class="p-3 border border-primary rounded">
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label asp-for="Name"></label>
+          <input asp-for="Name" class="form-control" placeholder="Name of Dish">
+          <span asp-validation-for="Name" style="color:red;"></span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label asp-for="ChefId"></label>
+          <select asp-for="ChefId" class="form-control">
+            <option value=""></option>
+            @foreach (var chef in ViewBag.Chefs){
+              <option value="@chef.Id">@chef.FirstName @chef.LastName</option>
+            }
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label asp-for="Calories"></label>
+          <input asp-for="Calories" class="form-control" placeholder="Calories">
+          <span asp-validation-for="Calories" style="color:red;"></span>
+        </div>
+        <div class="form-group col-md-3">
+          <label asp-for="Tastiness"></label>
+          <select asp-for="Tastiness" class="form-control">
+            <option value=""></option>
+            @foreach (var rating in ratings){
+            <option value="@rating">@rating</option>
+            }
+          </select>
+          <span asp-validation-for="Tastiness" style="color:red;"></span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label asp-for="Description"></label>
+          <textarea asp-for="Description" class="form-control"></textarea>
+          <span asp-validation-for="Description" style="color:red;"></span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">SUBMIT DISH</button>
+    </form>
+  </div>
+  <div class="col-sm-3"></div>
+</div>

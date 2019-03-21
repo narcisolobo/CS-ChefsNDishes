@@ -1,0 +1,8 @@
+.large-white {
+    color: white;
+    font-size: larger;
+}
+
+.active-page {
+    font-weight: bold;
+}

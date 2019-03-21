@@ -1,0 +1,40 @@
+@using ChefsNDishes.Models
+@model List<Chef>
+
+@{
+  ViewData["Title"] = "Chefs 'N Dishes";
+}
+<div class="row text-center bg-primary p-3 large-white">
+  <div class="col-sm-5 text-right active-page"><a href="/" class="text-white">CHEFS</a></div>
+  <div class="col-sm-2 text-center">|</div>
+  <div class="col-sm-5 text-left"><a href="/dishes" class="text-white">DISHES</a></div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="d-flex justify-content-between mb-3">
+      <h3 class="my-0 ml-2">CURRENT CHEFS ROSTER</h3>
+      <a href="/new" class="btn btn-primary" class="float-right" role="button">ADD A CHEF</a>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Number of Dishes</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var chef in Model) {
+          <tr>
+            <td>@chef.FirstName @chef.LastName</td>
+            <td>@chef.Age</td>
+            <td>@chef.SubmittedDishes.Count</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm-3"></div>
+</div>
